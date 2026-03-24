@@ -1,0 +1,35 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package bai2;
+
+/**
+ *
+ * @author admin
+ */
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class ClientMain extends Application {
+    @Override
+    public void start(Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("chat-view.fxml"));
+        Scene scene = new Scene(loader.load());
+        
+        // Lấy controller ra để gọi hàm setupClient
+        ChatController controller = loader.getController();
+        controller.setupClient("127.0.0.1", 8080);
+        
+        stage.setTitle("Chat Client (Người gửi)");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
